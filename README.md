@@ -54,7 +54,13 @@ data_extracted<- data_all[, grepl("mean\\(\\)|std\\(\\)|activityID|subject", nam
 data <- merge(data_extracted, activity_labels, by = "activityID")[-1]
 ```
 
-#### 5. Extract only the mean and std measurements, then replace activity IDs with activity names.
+#### 5. create an individual tidy data set with the average of each variable for each activity and subject.
+##### Notes: I observed the data and had following findings:
+  - Most variable names contain value information which can be put in different categories.
+  - The categories can be domain, acceleration type, signal type, axis, math method based on my limited knowledge. Pepole might have different categories in mind.
+  - I see some variable names starting with "fbobybody" which is not consistent with the nameing description in features_info.txt.
+  - For more detailed information, please refer to the commmented lines in the run_analysis.R script
+       
 ```r
 #------------Step 5 ----------------------
 #creating a individual tidy data set with the average of each variable for each activity and subject.
