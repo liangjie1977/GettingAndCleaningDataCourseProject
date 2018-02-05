@@ -7,13 +7,13 @@
 - README.md : explains the data analysis process
 
 ### File operation and data analysis throught run_analysis.R
-1. Download file from provided URL, then unzip it
+#### 1. Download file from the provided URL, then unzip it
 ```r
 download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", "Dataset.zip")
 unzip("Dataset.zip")
 ```
 
-2. 
+#### 2. Read train and test data, then merge with related activity and subject data 
 ```r
 #Read activity lables and features, rename the column names from "v1" and "v2" to more readable column names.
 activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")
@@ -34,21 +34,25 @@ subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt")
 data_train <- cbind(X_train, y_train, subject_train)
 ```
 
+#### 3. Merge train and test data, then rename to descriptive variable names
+```r
 #Merge test and train data to get a whole dataset
 data_all <-rbind(data_train, data_test)
 
 #Rename all colomn names using descriptive variable names
 colnames(data_all) <- c(as.character(features$featureName), "activityID", "subject")
+```
 
+#### 4. Extract only the mean and std measurements, then replace activity IDs with activity names.
+```r
 #Extract only the measurements on the mean and std for each measurement
 #Make sure to keep activityID and subject columns
 data_extracted<- data_all[, grepl("mean\\(\\)|std\\(\\)|activityID|subject", names(data_all)) ]
 
-
 #Merge data_extracted with activity_labels to bring in activityName, then remove activityID from the dataframe.
 #data is the result for project step 1~4.
 data <- merge(data_extracted, activity_labels, by = "activityID")[-1]
-
+```
 
 
 #------------Step 5 ----------------------
