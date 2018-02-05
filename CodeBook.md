@@ -1,9 +1,8 @@
-#Codebook for data_tidy
+Codebook for data_tidy
 
 
 
 ------------------------------
-
 Variable name    | Description
 -----------------|------------
 activityName     | Activity name which can be WALKING, WALKING_UPSTAIRS,WALKING_DOWNSTAIRS,SITTING,STANDING,LAYING
