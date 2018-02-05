@@ -3,6 +3,7 @@
 
 
 Variable name    | Description
+|:-------------- |:-------------|
 activityName     | Activity name which can be WALKING, WALKING_UPSTAIRS,WALKING_DOWNSTAIRS,SITTING,STANDING,LAYING
 subject          | Subject ID is an interger within 1 ~30
 domain           | Data colletion domain. "t" stands for time domain, "f" stands for frequency domain.
