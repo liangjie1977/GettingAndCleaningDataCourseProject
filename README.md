@@ -54,7 +54,8 @@ data_extracted<- data_all[, grepl("mean\\(\\)|std\\(\\)|activityID|subject", nam
 data <- merge(data_extracted, activity_labels, by = "activityID")[-1]
 ```
 
-
+#### 5. Extract only the mean and std measurements, then replace activity IDs with activity names.
+```r
 #------------Step 5 ----------------------
 #creating a individual tidy data set with the average of each variable for each activity and subject.
 
@@ -86,8 +87,10 @@ names(data_final) <- gsub("-Gravity", "-Gravity-", names(data_final))
 data_melted <- melt(data_final, id = c("activityName", "subject") )
 
 data_tidy <-separate(data_melted, col = "variable", into = c("domain", "accelerationType","signalType","axis","mathMethod"), sep = "-")
+```
 
-
-
+#### 6. Write data_tidy to file.
+```r
 #Write data_tidy back to "data_tidy.txt"
 write.table(data_tidy, "data_tidy.txt",  row.name=FALSE)
+```
