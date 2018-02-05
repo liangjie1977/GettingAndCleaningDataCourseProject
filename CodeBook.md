@@ -1,7 +1,7 @@
 ##Codebook for data_tidy
 
 
-Variable list and descriptions
+
 ------------------------------
 
 Variable name    | Description
