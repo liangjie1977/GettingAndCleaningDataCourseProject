@@ -6,6 +6,9 @@
 download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", "Dataset.zip")
 unzip("Dataset.zip")
 
+#reshape2 library is needed for this project
+library(reshape2)
+
 #------------Step 1 ~ 4 ----------------------
 #Read activity lables and features, rename the column names from "v1" and "v2" to more readable column names.
 activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")
